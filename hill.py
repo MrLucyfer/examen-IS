@@ -22,7 +22,9 @@ def encode(message, key):
     result = multiplication.flatten()
     return ''.join([dictionary[num] for num in result])
 
-result = encode(args.message, key)
-print(result)
-result = encode(result, key)
-print(result)
+if args.c:
+    print(encode(args.message, key))
+elif args.d:
+    print('Not done yet')
+elif args.b:
+    print('Still not implemented sorry bois')
