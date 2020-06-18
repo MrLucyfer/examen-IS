@@ -18,7 +18,7 @@ def encode(message, key):
     encoded = ''
     for letter in message:
         char = ((ord(letter) - 65) + key) % len(dictionary)
-        decoded += dictionary[char]    
+        encoded += dictionary[char]    
     return encoded
 
 def decode(message, key):
@@ -39,11 +39,9 @@ def bruteforce(message):
     return messages
     
 if args.c:
-    print('Encode')
     print(encode(args.message, args.k))
     
 elif args.d:
-    print('Decode')
     print(decode(args.message, args.k))
 elif args.b:
     messages = bruteforce(args.message)
