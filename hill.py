@@ -41,26 +41,22 @@ def multi_inverse(b, n):
 def encode(message, key):
     msg = np.array([ord(letter) - 65 for letter in message]).reshape((3, 2))
     multiplication = np.dot(msg, key) % len(dictionary)
-
     result = multiplication.flatten()
-    print(result)
-    result_list = []
-
-    for char in result[0]:
-        result_list.append(char)
-
+    if type(result) == np.matrix:
+        result = np.asarray(result)[0]
     # print('Key: {}'.format(key))
     # print(result)
     return ''.join([dictionary[num] for num in result])
 
 def decode(message, key):
-    key = np.matrix([[3,3], [2,5]])
-    determinant = int(np.linalg.det(key))
-    inv_key = np.linalg.inv(key) *  determinant 
-    inv_key *= multi_inverse(determinant, 26)
-    inv_key = inv_key % 26
-    inv_key = inv_key.astype(int)
-    return encode(message, inv_key)
+    m_key = np.asmatrix(key)
+    print(m_key)
+    determinant = int(np.linalg.det(m_key))
+    print(determinant)
+    key_matrix_inv = np.linalg.inv(np.matrix(m_key)) * \
+            determinant * \
+            multi_inverse(determinant, 26) % 26
+    return encode(message, key_matrix_inv.astype(int))
 
 if args.c:
     print(encode(args.message, m_key))
