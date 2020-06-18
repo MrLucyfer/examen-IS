@@ -3,7 +3,7 @@ JIJIJAJA
 
 ## TO-DO
 
-- [ ] Caesar cipher
+- [X] Caesar cipher
 - [ ] Matrix Cipher
 - [ ] RSA
 - [ ] Hashing?
