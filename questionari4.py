@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 inpt = ''
-
+side = input('Enter side of identity:')
 matrix = []
 
 while inpt != 's':
@@ -24,9 +24,12 @@ G = np.matrix(matrix)
 
 g = G.T
 
-
-identity = np.identity(g.shape[0])
-array = np.concatenate((identity, g), axis=1)
+if side == 'left':
+    identity = np.identity(g.shape[0])
+    array = np.concatenate((g, identity), axis=1)
+elif side == 'right':
+    identity = np.identity(g.shape[0])
+    array = np.concatenate((identity, g), axis=1)
 
 n = g.shape[0] + g.shape[1]
 k = g.shape[1]
