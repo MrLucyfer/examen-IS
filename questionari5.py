@@ -57,8 +57,8 @@ def decodifica():
     associada = []
     print("Correcting errors:")
     for i in range(len(indeces)):
-        final_result.append(abs(cadena[i] - indeces[i] % 2))
-        associada.append((abs(cadena[i] - indeces[i]) % 2)[:3])
+        final_result.append(abs(cadena[i+1] - indeces[i] % 2))
+        associada.append((abs(cadena[i+1] - indeces[i]) % 2)[:3])
     
     final_result = np.array(final_result).flatten()
     associada = np.array(associada).flatten()
